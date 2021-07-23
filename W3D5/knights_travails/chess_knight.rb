@@ -3,21 +3,24 @@ class KnightPathFinder
     
     def self.valid_moves(pos)
         potential_moves = []
-        potential_moves << pos + [2,1]
-        potential_moves << pos + [2,-1]
-        potential_moves << pos + [-2,1]
-        potential_moves << pos + [-2,-1]
-        potential_moves << pos + [1,2]
-        potential_moves << pos + [1,-2]
-        potential_moves << pos + [-1,2]
-        potential_moves << pos + [-1,-2]
+        potential_moves << KnightPathFinder.add_positions(pos, [2,1])
+        potential_moves << KnightPathFinder.add_positions(pos, [2,-1])
+        potential_moves << KnightPathFinder.add_positions(pos, [-2,1])
+        potential_moves << KnightPathFinder.add_positions(pos, [-2,-1])
+        potential_moves << KnightPathFinder.add_positions(pos, [1,2])
+        potential_moves << KnightPathFinder.add_positions(pos, [1,-2])
+        potential_moves << KnightPathFinder.add_positions(pos, [-1,2])
+        potential_moves << KnightPathFinder.add_positions(pos, [-1,-2])
         potential_moves.reject do |p| 
-            p[0] < 0 || p[0] > 7
+            p[0] < 0 || p[1] > 7
             p[1] < 0 || p[1] > 7
         end
         potential_moves
     end
 
+    def self.add_positions(pos_1, pos_2)
+        return [pos_1[0] + pos_2[0], pos_1[1] + pos_2[1]]
+    end
     def initialize(pos)
         @position = pos
         self.root_node
@@ -25,19 +28,22 @@ class KnightPathFinder
     end
     
     def root_node
-        @root_node = PolyTreeNode.new(pos)
+        @root_node = PolyTreeNode.new(@position)
     end
 
     def new_move_positions(pos)
         vmoves = KnightPathFinder.valid_moves(pos)
         vmoves = vmoves - @considered_positions # filter out @considered_positions
         @considered_positions += vmoves
-        vmoves
+        p vmoves
     end
 
 
     # def find_path
 end
+
+start = KnightPathFinder.new([0,0])
+start.new_move_positions([0,0]) 
 
 
 ## part II 
