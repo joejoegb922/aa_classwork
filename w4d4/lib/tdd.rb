@@ -29,3 +29,23 @@ class Array
     sums
   end
 end
+
+def stock_picker(array)
+  stock_pairs = []
+  largest_difference = 0
+  largest_current_pair = []
+
+  (0...array.length).each do |i|
+    (i+1...array.length).each do|j|
+      if largest_difference > array[i] - array[j]
+        largest_difference = array[i] - array[j]
+        largest_current_pair = [i,j]
+      elsif largest_difference == array[i] - array[j]
+        stock_pairs = [largest_current_pair] 
+        stock_pairs << [i,j]
+      end
+    end
+  end
+  return stock_pairs if stock_pairs.length > 0
+  largest_current_pair
+end

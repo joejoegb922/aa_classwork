@@ -44,5 +44,26 @@ describe "Array" do
         expect([-1, 0, 2, -2, 1].two_sum).not_to eq([[2,3],[0,4]])
       end
     end
+
+    
 end
 
+describe "stock_picker" do
+  array_1 = [8000, 1, 65, 1, 4, 120]
+  array_2 = [8000, 1, 65, 4, 120]
+  it "should accept an array without error" do
+    stock_picker(array_1)
+  end
+
+  it "should return the indexes of the most profitable pair of days" do
+    expect(stock_picker(array_2)).to eq([1,4])
+  end
+
+  it "should make sure you buy the stock before selling" do 
+    expect(stock_picker(array_2)).not_to eq([1,0])
+  end
+
+  it "should return both sets of dates if they both are equally profitable" do
+    expect(stock_picker(array_1)).to eq([[1,5], [3,5]])
+  end
+end
