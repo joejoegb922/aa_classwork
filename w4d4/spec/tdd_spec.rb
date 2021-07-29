@@ -9,6 +9,24 @@ describe "TDD_1" do
             expect(uniq([1,2,2,3,3,4,5])).to eq([1,2,3,4,5])
         end
     end
+
+    describe "my_transpose" do 
+      it "should not use built-in Array#transpose" do 
+        array = [[7, 6, 5, 4],[6, 5, 3, 4],[7, 6, 5, 4],[6, 5, 3, 4]]
+        expect(array).to_not receive(:transpose)
+        my_transpose(array)
+      end 
+
+      it "should accept a 2D array without raising error" do
+        array = [[7, 6, 5, 4],[6, 5, 3, 4],[7, 6, 5, 4],[6, 5, 3, 4]]
+        expect(my_transpose(array))
+      end
+
+      it "should flip the rows and colums [[1,2,3],[4,5,6],[6,7,8]] => [[1,4,6],[2,5,7],[3,6,8]]" do 
+        array = [[1,2,3],[4,5,6],[6,7,8]]
+        expect(my_transpose(array)).to eq([[1,4,6],[2,5,7],[3,6,8]])
+      end
+    end
 end
 
 describe "Array" do

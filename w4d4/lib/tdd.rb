@@ -5,6 +5,18 @@ def uniq(array)
     new_arr
 end
 
+def my_transpose(array)
+  transposed_arr = []
+  (0...array.length).each do |row|
+    sub_array = []
+    (0...array.length).each do |col|
+      sub_array << array[col][row]
+    end
+    transposed_arr << sub_array
+  end
+  transposed_arr
+end
+
 class Array
 
   def two_sum
