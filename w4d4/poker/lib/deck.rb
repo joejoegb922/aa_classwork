@@ -18,5 +18,8 @@ class Deck
       deck
     end
 
+    def shuffle_deck
+      @deck.shuffle
+    end
 
 end

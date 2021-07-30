@@ -23,14 +23,16 @@ describe "deck" do
         expect(deck.build_deck.all?{|card| card.is_a?(Card)}).to eq true
       end
 
-
-
       it "should have all unique cards" do
         built_deck = deck.build_deck 
         expect(built_deck).to eq(built_deck.uniq)
       end
+      
+    end
 
-      
-      
+    describe "shuffle_deck" do 
+      it "should shuffle the deck" do
+        expect(deck.shuffle_deck).not_to eq(deck)
+      end
     end
 end
