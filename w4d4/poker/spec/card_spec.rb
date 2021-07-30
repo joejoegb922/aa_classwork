@@ -5,6 +5,14 @@ describe "card" do
     # subject { Card.new("ace",:hearts) }
     card = Card.new("ace",:hearts)
 
+    it "should define class constant SUITS" do
+        expect(Card::SUITS.is_a?(Array)).to eq true
+    end
+
+    it "should define class constant VALUES" do
+        expect(Card::VALUES.is_a?(Array)).to eq true
+    end
+
     it "should accept a value and suit as argument" do 
       expect(Card.new("king", :hearts))
     end 

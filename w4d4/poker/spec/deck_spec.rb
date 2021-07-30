@@ -3,13 +3,7 @@ require "deck"
 describe "deck" do 
     deck = Deck.new
 
-    it "should define class constant SUITS" do
-        expect(SUITS.is_a?(Array)).to eq true
-    end
 
-    it "should define class constant VALUES" do
-        expect(VALUES.is_a?(Array)).to eq true
-    end
 
     describe "initialize" do 
 
@@ -17,19 +11,17 @@ describe "deck" do
           expect(deck.instance_variable_get(:@deck).length).to eq(52)
         end
 
-        # it "should call ::build_deck" do 
-        #   expect(self).to receive(:build_deck)
-        # end
 
     end
 
     describe "build_deck" do 
-      it "should return full deck of 52 Card instances" do 
+      it "should return full deck wof 52 cards" do 
         expect(deck.build_deck.length).to eq(52)
-        expect(deck.build_deck.all?{|card| card.is_a?(Card)}).to eq true
       end
 
-      it "should return all "
+      it "should return all Card instances" do
+        expect(deck.build_deck.all?{|card| card.is_a?(Card)}).to eq true
+      end
 
 
 
