@@ -6,9 +6,16 @@ class ShortenedUrl < ApplicationRecord
     end
 
     def self.assigns_shorten(user, long_url)
-        until !ShortenedUrls.exists?(short_url: temp)
+        temp = self.random_code
+        until !exists?(short_url: temp)
             temp = self.random_code
         end
-        self = ShortenedUrl.new(short_url: temp, long_url: long_url, user_id: user.id)
+        ShortenedUrl.new(short_url: temp, long_url: long_url, user_id: user.id)
     end
+
+    belongs_to :submitter,
+      primary_key: :id,
+      foreign_key: :user_id,
+      class_name: "User"
+
 end
