@@ -10,6 +10,23 @@
   </head>
 
   <body>
+    <header>
+      <h1>Welcome To RedditClone!</h1>
+    </header>
+
+    <% if logged_in? %>
+       <h3>Welcome, <%= current_user.username %>!</h3>
+    <% else %>
+      <a href="<%= new_user_url %>">Sign Up</a>
+      <br>
+      <a href="<%= new_session_url %>">Login</a>
+    <% end %>
+
+    <form action="<%= session_url %>" method='post'>
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Logout">
+    </form>
+    
     <%= yield %>
   </body>
 </html>
