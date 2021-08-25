@@ -13,10 +13,10 @@ function _makeGrid () {
   for (let i = 0; i < 8; i++) {
     grid.push(new Array(8));
   }
-  grid[3][3] = new Piece("white")
-  grid[4][4] = new Piece("white")
-  grid[3][4] = new Piece("black")
-  grid[4][3] = new Piece("black")
+  grid[3][3] = new Piece("white");
+  grid[4][4] = new Piece("white");
+  grid[3][4] = new Piece("black");
+  grid[4][3] = new Piece("black");
 
   return grid;
 }
@@ -36,7 +36,7 @@ Board.DIRS = [
 
 /**
  * Checks if a given position is on the Board.
- */
+//  */
 Board.prototype.isValidPos = function (pos) {
   if (pos[0] < 0 || pos[0] > 7) {
     return false;
@@ -53,10 +53,12 @@ Board.prototype.isValidPos = function (pos) {
  * throwing an Error if the position is invalid.
  */
 Board.prototype.getPiece = function (pos) {
-  let currentPos = this[pos[0], pos[1]]
-  if this.isValidPos(pos) {
+
+  if (!this.isValidPos(pos)) {
+    throw new Error("Not valid pos!");
+  }  
+  let currentPos = this.grid[pos[0]][pos[1]];
     return currentPos;
-  }
 };
 
 /**
@@ -64,12 +66,29 @@ Board.prototype.getPiece = function (pos) {
  * matches a given color.
  */
 Board.prototype.isMine = function (pos, color) {
+
+  // let piece = this.getPiece(pos)
+
+  if (this.getPiece(pos) == undefined) {
+    return false;
+  }
+    else if (this.getPiece(pos).color === color) { 
+    return true;
+  } else {
+    return false; 
+  }
+
 };
 
 /**
  * Checks if a given position has a piece on it.
  */
 Board.prototype.isOccupied = function (pos) {
+  if (this.getPiece(pos) == undefined) {
+    return false;
+  } else {
+    return true;
+  }
 };
 
 /**
@@ -86,6 +105,48 @@ Board.prototype.isOccupied = function (pos) {
  * Returns empty array if no pieces of the opposite color are found.
  */
 Board.prototype._positionsToFlip = function(pos, color, dir, piecesToFlip){
+  // check if position is Valid, 
+  // if position is Occupied, and if so, 
+  //if occupied posion is the same color
+
+  if (!piecesToFlip) {
+    piecesToFlip = []
+  } else {
+    piecesToFlip.push(pos)
+  }
+
+  let newPos = [pos[0] + dir[0], pos[1] + dir[1]];
+
+  if (!this.isValidPos(newPos)) {
+    return [];
+  }
+
+  if (!this.isOccupied(newPos)) {
+      return [];
+  }
+
+  if (this.isMine(newPos, color)) {
+    if (piecesToFlip.length === 0) {
+      return [];
+    } else {
+      return piecesToFlip;
+    }
+  }
+
+  return this._positionsToFlip(newPos, color, dir, piecesToFlip)
+  
+  // || !this.isOccupied(pos))  {
+  //   return []
+  // }
+
+  // return array.concat(this._positonsToFlip(newPos, color, dir, piecesToFlip))
+
+  // add direction to position, call recursively with that pos
+
+  // piecesToFlip = function(arr){
+
+  // }
+
 };
 
 /**
