@@ -17,13 +17,11 @@ li {
   border: 5px solid black;
 }
 
-li .x {
+.x {
   background-color: cornflowerblue;
 }
 
 ul {
-  /* list-style: square; */
-
   display: grid;
   justify-content: center;
   margin: 25px;

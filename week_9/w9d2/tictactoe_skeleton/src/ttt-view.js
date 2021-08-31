@@ -2,7 +2,9 @@ class View {
   constructor(game, el) {
     this.game = game;
     this.el = el;
+    this.handleClick = this.handleClick.bind(this);
     this.setupBoard();
+    this.bindEvents();
   }
 
   setupBoard() {
@@ -10,7 +12,7 @@ class View {
     for (let i = 0; i < 3; i++) {
       for (let j = 0; j < 3; j++) {
         const li = document.createElement("li");
-        li.dataset.position = JSON.stringify([i, j]);
+        li.dataset.position = [i, j];
         ul.append(li);
       }
     }
@@ -23,25 +25,21 @@ class View {
 
   handleClick(e) { // e is a "synthetic event"
     const se = e.target; // e.target refers to the DOM elements that triggered the event "e"
-    // if ("li" === se.nodeName && this.makeMove(se)) {
-    //   return true;
-    // } else {
-    //   return false;
-    // }
     "LI" === se.nodeName && this.makeMove(se);
   }
 
   makeMove(square) {
-    // square is the position
-    const pos = JSON.parse(square.dataset.position);
 
-    if (true) {
+    const pos = square.dataset.position;
+
+      try {
       this.game.playMove(pos);
-      square.classList.add(this.game.currentPlayer);
-    } else {
+    } catch (e) {
       alert("Invalid move");
     }
+    square.classList.add(currentPlayer);
   }
 }
+
 
 module.exports = View;

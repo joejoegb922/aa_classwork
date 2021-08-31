@@ -6,3 +6,4 @@ document.addEventListener("DOMContentLoaded", () => {
   const el = document.querySelector(".ttt")
   new View(game, el);
 });
+
