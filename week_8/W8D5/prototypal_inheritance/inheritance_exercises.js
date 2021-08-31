@@ -24,25 +24,25 @@ Asteroid.inherits(MovingObject);
 let ship = new Ship();
 let asteroid = new Asteroid();
 let movingObj = new MovingObject();
-console.log("---------------------")
-console.log(ship)
-console.log(ship.__proto__)
-console.log(ship.constructor)
-console.log(ship.prototype)
-ship.destroy();
+// console.log("---------------------")
+// console.log(ship)
+// console.log(ship.__proto__)
+// console.log(ship.constructor)
+// console.log(ship.prototype)
+// ship.destroy();
 
-console.log("---------------------")
-console.log(asteroid)
-console.log(asteroid.__proto__)
-console.log(asteroid.constructor)
-console.log(asteroid.prototype)
-asteroid.destroy();
-console.log("---------------------")
+// console.log("---------------------")
+// console.log(asteroid)
+// console.log(asteroid.__proto__)
+// console.log(asteroid.constructor)
+// console.log(asteroid.prototype)
+// asteroid.destroy();
+// console.log("---------------------")
 
-console.log(movingObj)
-console.log(movingObj.__proto__)
-console.log(movingObj.constructor)
-console.log(movingObj.prototype)
-movingObj.destroy();
-console.log("---------------------")
+// console.log(movingObj)
+// console.log(movingObj.__proto__)
+// console.log(movingObj.constructor)
+// console.log(movingObj.prototype)
+// movingObj.destroy();
+// console.log("---------------------")
 
