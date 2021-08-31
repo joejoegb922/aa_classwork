@@ -3,5 +3,6 @@ const Game = require("../ttt_node/game.js")// require appropriate file
 
 document.addEventListener("DOMContentLoaded", () => {
   const game = new Game();
-  
+  const el = document.querySelector(".ttt")
+  new View(game, el);
 });

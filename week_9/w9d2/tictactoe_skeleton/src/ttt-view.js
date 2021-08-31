@@ -23,27 +23,25 @@ class View {
 
   handleClick(e) { // e is a "synthetic event"
     const se = e.target; // e.target refers to the DOM elements that triggered the event "e"
-    if ("li" === se.nodeName && this.makeMove(se)) {
-      return true;
-    } else {
-      return false;
-    }
+    // if ("li" === se.nodeName && this.makeMove(se)) {
+    //   return true;
+    // } else {
+    //   return false;
+    // }
+    "LI" === se.nodeName && this.makeMove(se);
   }
 
   makeMove(square) {
     // square is the position
     const pos = JSON.parse(square.dataset.position);
 
-
-    if (pos === undefined) {
-      this.game.playMove(pos)
-      pos.classList.add(this.game.currentPlayer)
+    if (true) {
+      this.game.playMove(pos);
+      square.classList.add(this.game.currentPlayer);
     } else {
-          alert("Invalid move")
+      alert("Invalid move");
     }
-
   }
-
 }
 
 module.exports = View;

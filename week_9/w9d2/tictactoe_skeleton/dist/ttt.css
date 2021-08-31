@@ -1,7 +1,42 @@
+html, body, figure, figcaption, ul, li, h1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  text-align: inherit;
+}
+
 li:hover {
   background-color: #00ffff;
 }
 
 li {
-    border-style: dotted dashed solid double;
+  display: flex;
+  width: 100px;
+  height: 100px;
+  border: 5px solid black;
+}
+
+li .x {
+  background-color: cornflowerblue;
+}
+
+ul {
+  /* list-style: square; */
+
+  display: grid;
+  justify-content: center;
+  margin: 25px;
+  grid-template-columns: 105px 105px 105px;
+  grid-template-rows: 105px 105px 105px;
+}
+
+body {
+  font-family: Papyrus;
+  text-align: center;
+}
+
+h1 {
+  font-size: 50px;
+  font-weight: 1000;
 }
