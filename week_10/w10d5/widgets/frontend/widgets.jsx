@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import Clock from "./clock"
 
 function Root() {
-    return <div>hello</div>
+    return <div className="widgets"><Clock/></div>
 } 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -11,11 +11,11 @@ document.addEventListener("DOMContentLoaded", () => {
     ReactDOM.render(<Root/>, main) 
 })
 
-class Widgets extends React.Component {
-    constructor(props) {
-        super(props);
+// class Widgets extends React.Component {
+//     constructor(props) {
+//         super(props);
 
-    }
-}
+//     }
+// }
 
-export default Widgets;
+// export default Widgets;
