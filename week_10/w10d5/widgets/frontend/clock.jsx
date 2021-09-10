@@ -6,30 +6,32 @@ class Clock extends React.Component {
         super(props);
         let currentTime = new Date();
         this.state = {time: currentTime};
-    }
 
-    render() {
-        return ( 
-            <div Clock="title">
-                <h1>Clock</h1>
-                <h2>time: {this.state.time}</h2>
-            </div>
-        )
-    }
-
-    componentDidMount(){
-        setInterval(function(){
-            tick();
-
-        },1000)
     }
 
     tick(){
         let newTime = new Date();
-        this.setState({time: newTime})
+        this.setState({time: newTime}, () => { 
+            console.log(this.state.time)});
     }
 
-    setInterval(){
+    render() {
+        
+        return ( 
+            <div className="Clock">
+                <h1>Clock</h1>
+                <div>{`${this.state.time}`}</div>
+            </div>
+        )
+    }
+    
+    
+    componentDidMount(){
+        console.log("it works")
+        setInterval(this.tick.bind(this), 1000);
+    }
+
+    componentWillUnmount() {
 
     }
 }

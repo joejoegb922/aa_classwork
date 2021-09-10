@@ -56,30 +56,33 @@ var Clock = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(Clock, [{
+    key: "tick",
+    value: function tick() {
+      var _this2 = this;
+
+      var newTime = new Date();
+      this.setState({
+        time: newTime
+      }, function () {
+        console.log(_this2.state.time);
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        Clock: "title"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Clock"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "time: ", this.state.time));
+        className: "Clock"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Clock"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "".concat(this.state.time)));
     }
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      setInterval(function () {
-        tick();
-      }, 1000);
+      console.log("it works");
+      setInterval(this.tick.bind(this), 1000);
     }
   }, {
-    key: "tick",
-    value: function tick() {
-      var newTime = new Date();
-      this.setState({
-        time: newTime
-      });
-    }
-  }, {
-    key: "setInterval",
-    value: function setInterval() {}
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {}
   }]);
 
   return Clock;
