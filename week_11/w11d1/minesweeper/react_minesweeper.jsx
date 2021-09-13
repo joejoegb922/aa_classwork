@@ -1,4 +1,5 @@
 import React from "react";
 import Game from "game";
 
-ReactDOM.render(<Game/>, document.getElementById("main"));
+
+// ReactDOM.render(<Game/>, document.getElementById("main"));
