@@ -7,13 +7,18 @@ class Game extends React.Component {
     constructor(props) {
         super(props)
     
-        this.state = { board: new Minesweeper.Board(10, 10) }
+        this.state = { board: new Minesweeper.Board(4, 4) }
         
         this.updateGame = this.updateGame.bind(this);
     }
 
-    updateGame() {
-
+    updateGame(tile, boolean) {
+        if (boolean){
+            tile.toggleFlag();
+        } else{
+            tile.explore();
+        }
+        this.setState({board: this.state.board})
     }
 
     render(){

@@ -55,28 +55,45 @@ var Board = /*#__PURE__*/function (_React$Component) {
   _createClass(Board, [{
     key: "render",
     value: function render() {
-      var _this = this;
-
-      console.log("".concat(this.props.board.grid));
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "Board"
-      }, this.props.board.grid.map(function (row, i) {
-        /*#__PURE__*/
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "row"
-        }, row.map(function (el, j) {
-          {
-            new _minesweeper__WEBPACK_IMPORTED_MODULE_2__.Tile(_this.props.board, [i, j]);
-          } // <Tile />
-        }));
-      }));
+        className: "board"
+      }, this.renderRows()); // console.log(`${this.props.board.grid}`)
+      // return (
+      //     <div className="Board">
+      //         {this.props.board.grid.map((row, i) =>{
+      //           <div className="row">
+      //               {row.map((el, j) =>{
+      //                   {new Minesweeper.Tile(this.props.board, [i,j])}
+      //                 // <Tile />
+      //                 })}
+      //           </div>
+      //         })}
+      //     </div>
+      // )
     }
   }, {
     key: "renderRows",
-    value: function renderRows() {}
+    value: function renderRows() {
+      var _this = this;
+
+      return this.props.board.grid.map(function (el, indx) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          className: "row"
+        }, _this.renderTiles(el, indx));
+      });
+    }
   }, {
     key: "renderTiles",
-    value: function renderTiles() {}
+    value: function renderTiles(row, indx) {
+      var _this2 = this;
+
+      return row.map(function (el, index) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_tile__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          tile: el,
+          update: _this2.props.update
+        });
+      });
+    }
   }]);
 
   return Board;
@@ -138,7 +155,7 @@ var Game = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      board: new _minesweeper__WEBPACK_IMPORTED_MODULE_2__.Board(10, 10)
+      board: new _minesweeper__WEBPACK_IMPORTED_MODULE_2__.Board(4, 4)
     };
     _this.updateGame = _this.updateGame.bind(_assertThisInitialized(_this));
     return _this;
@@ -146,7 +163,17 @@ var Game = /*#__PURE__*/function (_React$Component) {
 
   _createClass(Game, [{
     key: "updateGame",
-    value: function updateGame() {}
+    value: function updateGame(tile, _boolean) {
+      if (_boolean) {
+        tile.toggleFlag();
+      } else {
+        tile.explore();
+      }
+
+      this.setState({
+        board: this.state.board
+      });
+    }
   }, {
     key: "render",
     value: function render() {
@@ -383,7 +410,28 @@ var Tile = /*#__PURE__*/function (_React$Component) {
   _createClass(Tile, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "T");
+      var tile = this.props.tile;
+      var bomb = "💣";
+      var flag = "🏴󠁧󠁢󠁳󠁣󠁴󠁿";
+      var emoji = "";
+
+      if (tile.explored) {
+        if (tile.bombed) {
+          emoji = bomb;
+        } else {
+          emoji = adjacentBombCount();
+        }
+      } else {
+        emoji = "❤️‍🔥";
+      }
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, emoji);
+    }
+  }, {
+    key: "handleClick",
+    value: function handleClick(e) {
+      var flagged = e.altKey ? true : false;
+      this.props.update();
     }
   }]);
 

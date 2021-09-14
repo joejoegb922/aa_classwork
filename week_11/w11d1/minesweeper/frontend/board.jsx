@@ -10,27 +10,45 @@ class Board extends React.Component{
     }
 
     render(){
-        console.log(`${this.props.board.grid}`)
-        return (
-            <div className="Board">
-                {this.props.board.grid.map((row, i) =>{
-                  <div className="row">
-                      {row.map((el, j) =>{
-                          {new Minesweeper.Tile(this.props.board, [i,j])}
-                        // <Tile />
-                        })}
-                  </div>
-                })}
+
+        return(
+            <div className="board">
+                {this.renderRows()}
             </div>
         )
+        // console.log(`${this.props.board.grid}`)
+        // return (
+        //     <div className="Board">
+        //         {this.props.board.grid.map((row, i) =>{
+        //           <div className="row">
+        //               {row.map((el, j) =>{
+        //                   {new Minesweeper.Tile(this.props.board, [i,j])}
+        //                 // <Tile />
+        //                 })}
+        //           </div>
+        //         })}
+        //     </div>
+        // )
     }
 
     renderRows() {
-
+        return this.props.board.grid.map((el, indx) => {
+            return(
+                <div className="row">
+                    {this.renderTiles(el, indx)}
+                </div>
+            )
+            })
+        
     }
 
-    renderTiles(){
-        
+
+    renderTiles(row, indx){
+        return row.map((el, index) =>{
+            return (
+                <Tile tile={el} update={this.props.update}/>
+            )
+        })
     }
 
 }
