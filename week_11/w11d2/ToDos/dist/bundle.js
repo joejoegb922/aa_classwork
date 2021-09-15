@@ -1,6 +1,46 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./frontend/actions/step_actions.js":
+/*!******************************************!*\
+  !*** ./frontend/actions/step_actions.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "RECEIVE_STEP": () => (/* binding */ RECEIVE_STEP),
+/* harmony export */   "RECEIVE_STEPS": () => (/* binding */ RECEIVE_STEPS),
+/* harmony export */   "REMOVE_STEP": () => (/* binding */ REMOVE_STEP),
+/* harmony export */   "receiveSteps": () => (/* binding */ receiveSteps),
+/* harmony export */   "receiveStep": () => (/* binding */ receiveStep),
+/* harmony export */   "removeStep": () => (/* binding */ removeStep)
+/* harmony export */ });
+var RECEIVE_STEP = "RECEIVE_STEP";
+var RECEIVE_STEPS = "RECEIVE_STEPS";
+var REMOVE_STEP = "REMOVE_STEP";
+var receiveSteps = function receiveSteps(steps) {
+  return {
+    type: RECEIVE_STEPS,
+    todos: todos
+  };
+};
+var receiveStep = function receiveStep(step) {
+  return {
+    type: RECEIVE_STEP,
+    todo: todo
+  };
+};
+var removeStep = function removeStep(step) {
+  return {
+    type: REMOVE_STEP,
+    todo: todo
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/todo_actions.js":
 /*!******************************************!*\
   !*** ./frontend/actions/todo_actions.js ***!
@@ -70,9 +110,49 @@ var rootReducer = (0,redux__WEBPACK_IMPORTED_MODULE_2__.combineReducers)({
 /*!********************************************!*\
   !*** ./frontend/reducers/steps_reducer.js ***!
   \********************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/joejoegb922/Desktop/aa_classwork/week_11/w11d2/ToDos/frontend/reducers/steps_reducer.js: Unexpected token (10:12)\n\n\u001b[0m \u001b[90m  8 |\u001b[39m     \u001b[36mconst\u001b[39m newState \u001b[33m=\u001b[39m \u001b[33mObject\u001b[39m\u001b[33m.\u001b[39massign({}\u001b[33m,\u001b[39m state)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m  9 |\u001b[39m     \u001b[36mswitch\u001b[39m (action\u001b[33m.\u001b[39mtype) {\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 10 |\u001b[39m         \u001b[36mcase\u001b[39m\u001b[33m:\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 11 |\u001b[39m         \u001b[0m\n\u001b[0m \u001b[90m 12 |\u001b[39m         \u001b[36mdefault\u001b[39m\u001b[33m:\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 13 |\u001b[39m             \u001b[36mreturn\u001b[39m state\u001b[33m;\u001b[39m\u001b[0m\n    at Object._raise (/Users/joejoegb922/Desktop/aa_classwork/week_11/w11d2/ToDos/node_modules/@babel/parser/lib/index.js:808:17)\n    at Object.raiseWithData (/Users/joejoegb922/Desktop/aa_classwork/week_11/w11d2/ToDos/node_modules/@babel/parser/lib/index.js:801:17)\n    at Object.raise (/Users/joejoegb922/Desktop/aa_classwork/week_11/w11d2/ToDos/node_modules/@babel/parser/lib/index.js:762:17)\n    at Object.unexpected (/Users/joejoegb922/Desktop/aa_classwork/week_11/w11d2/ToDos/node_modules/@babel/parser/lib/index.js:3267:16)\n    at Object.parseExprAtom (/Users/joejoegb922/Desktop/aa_classwork/week_11/w11d2/ToDos/node_modules/@babel/parser/lib/index.js:11556:20)\n    at Object.parseExprAtom (/Users/joejoegb922/Desktop/aa_classwork/week_11/w11d2/ToDos/node_modules/@babel/parser/lib/index.js:7170:20)\n    at Object.parseExprSubscripts (/Users/joejoegb922/Desktop/aa_classwork/week_11/w11d2/ToDos/node_modules/@babel/parser/lib/index.js:11125:23)\n    at Object.parseUpdate (/Users/joejoegb922/Desktop/aa_classwork/week_11/w11d2/ToDos/node_modules/@babel/parser/lib/index.js:11105:21)\n    at Object.parseMaybeUnary (/Users/joejoegb922/Desktop/aa_classwork/week_11/w11d2/ToDos/node_modules/@babel/parser/lib/index.js:11083:23)\n    at Object.parseMaybeUnaryOrPrivate (/Users/joejoegb922/Desktop/aa_classwork/week_11/w11d2/ToDos/node_modules/@babel/parser/lib/index.js:10897:77)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _actions_step_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/step_actions */ "./frontend/actions/step_actions.js");
+
+
+
+
+
+var stepsReducer = function stepsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  var newState = Object.assign({}, state);
+
+  switch (action.type) {
+    case _actions_step_actions__WEBPACK_IMPORTED_MODULE_1__.RECEIVE_STEPS:
+      // debugger
+      for (var i = 0; i < action.steps.length; i++) {
+        newState[action.steps[i].id] = action.steps[i];
+      }
+
+      return newState;
+
+    case _actions_step_actions__WEBPACK_IMPORTED_MODULE_1__.RECEIVE_STEP:
+      newState[action.step.id] = action.step;
+      return newState;
+
+    case _actions_step_actions__WEBPACK_IMPORTED_MODULE_1__.REMOVE_STEP:
+      delete newState[action.step.id];
+      return newState;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (stepsReducer);
 
 /***/ }),
 
